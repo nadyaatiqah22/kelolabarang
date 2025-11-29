@@ -43,7 +43,7 @@ if (isset($_POST['login'])) {
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="h-screen flex items-center justify-center bg-cover bg-center relative" 
-      style="background-image: url('../assets/bg3.jpg');">
+      style="background-image: url('../assets/bgloginbz.jpg');">
 
 <div class="absolute inset-0 bg-gradient-to-r from-blue-500/40 to-green-500/40"></div>
 

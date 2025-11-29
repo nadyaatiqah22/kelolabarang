@@ -22,7 +22,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     <!-- Logo -->
 <div class="p-6 text-center border-b border-gray-700 flex items-center gap-3">
-    <img src="/kelolabarang/assets/LogoBPJS.png" alt="Logo" class="w-15 h-15">
+    <img src="/kelolabarang/assets/logobznobg.png" alt="Logo" class="w-15 h-15">
 </div>
 
 <!-- Menu -->

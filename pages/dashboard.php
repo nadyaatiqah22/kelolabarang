@@ -26,7 +26,6 @@ $barang_keluar_terbaru = query("
 ?>
 
 
-
 <?php include "../templates/header.php"; ?>
 
 <div class="p-6">
