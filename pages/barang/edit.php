@@ -69,39 +69,61 @@ if (isset($_POST['update'])) {
 ?>
 
 
+<div class="max-w-xl mx-auto bg-white p-6 sm:p-8 rounded-2xl shadow-xl">
+    <h1 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-800 text-center sm:text-left">
+        Edit Barang
+    </h1>
 
-<div class="max-w-xl mx-auto bg-white p-6 rounded shadow">
-    <h1 class="text-2xl font-bold mb-5">Edit Barang</h1>
+    <form method="POST" class="space-y-4">
 
-    <form method="POST">
+        <!-- Nama Barang -->
+        <div>
+            <label class="block mb-2 font-medium text-gray-700">Nama Barang</label>
+            <input type="text" name="nama_barang" required
+                   value="<?= htmlspecialchars($barang['nama_barang'], ENT_QUOTES); ?>"
+                   class="w-full border border-gray-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+        </div>
 
-        <label class="block mb-2 font-medium">Nama Barang</label>
-        <input type="text" name="nama_barang" required
-               value="<?= htmlspecialchars($barang['nama_barang'], ENT_QUOTES); ?>"
-               class="w-full border px-3 py-2 rounded mb-4">
+        <!-- Kategori -->
+        <div>
+            <label class="block mb-2 font-medium text-gray-700">Kategori</label>
+            <input type="text" name="kategori"
+                   value="<?= htmlspecialchars($barang['kategori'] ?? '', ENT_QUOTES); ?>"
+                   class="w-full border border-gray-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                   placeholder="Opsional">
+        </div>
 
-        <label class="block mb-2 font-medium">Kategori</label>
-        <input type="text" name="kategori"
-               value="<?= htmlspecialchars($barang['kategori'] ?? '', ENT_QUOTES); ?>"
-               class="w-full border px-3 py-2 rounded mb-4">
+        <!-- Stok -->
+        <div>
+            <label class="block mb-2 font-medium text-gray-700">Stok</label>
+            <input type="number" name="stok" min="0" required
+                   value="<?= intval($barang['stok']); ?>"
+                   class="w-full border border-gray-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+        </div>
 
-        <label class="block mb-2 font-medium">Stok</label>
-        <input type="number" name="stok" min="0" required
-               value="<?= intval($barang['stok']); ?>"
-               class="w-full border px-3 py-2 rounded mb-4">
-
+        <!-- Keterangan (opsional) -->
         <?php if ($has_keterangan): ?>
-            <label class="block mb-2 font-medium">Keterangan</label>
+        <div>
+            <label class="block mb-2 font-medium text-gray-700">Keterangan</label>
             <textarea name="keterangan"
-                      class="w-full border px-3 py-2 rounded mb-4"><?= htmlspecialchars($barang['keterangan'] ?? '', ENT_QUOTES); ?></textarea>
+                      class="w-full border border-gray-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+                      placeholder="Opsional"><?= htmlspecialchars($barang['keterangan'] ?? '', ENT_QUOTES); ?></textarea>
+        </div>
         <?php endif; ?>
 
-        <button type="submit" name="update"
-                class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-            Update
-        </button>
+        <!-- Tombol aksi -->
+        <div class="flex flex-col sm:flex-row gap-3 pt-3">
+            <button type="submit" name="update"
+                    class="bg-gradient-to-r from-blue-500 to-teal-400 hover:from-teal-400 hover:to-blue-500
+                           text-white px-5 py-2 rounded-2xl shadow-lg font-semibold transition-all w-full sm:w-auto text-center">
+                Update
+            </button>
 
-        <a href="index.php" class="ml-3 text-gray-700 hover:underline">Batal</a>
+            <a href="index.php"
+               class="text-gray-700 px-5 py-2 rounded-2xl border border-gray-300 hover:bg-gray-100 text-center w-full sm:w-auto transition">
+                Batal
+            </a>
+        </div>
     </form>
 </div>
 

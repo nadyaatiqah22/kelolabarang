@@ -33,55 +33,75 @@ if (isset($_POST['simpan'])) {
 
 
 
-<div class="max-w-xl mx-auto bg-white p-6 rounded shadow">
-    <h1 class="text-2xl font-bold mb-5">Tambah Barang</h1>
+<div class="max-w-xl mx-auto bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-8 rounded-2xl shadow-2xl border border-gray-700 mt-6">
+
+    <h1 class="text-3xl font-bold mb-6 text-center bg-gradient-to-r from-blue-400 to-teal-300 bg-clip-text text-transparent tracking-wide drop-shadow">
+        Tambah Barang
+    </h1>
 
     <?php if (!empty($error)) : ?>
-        <div class="bg-red-100 text-red-700 p-3 rounded mb-4"><?= $error; ?></div>
+        <div class="bg-red-500/20 border border-red-400 text-red-300 p-3 rounded mb-4 text-sm">
+            <?= $error; ?>
+        </div>
     <?php endif; ?>
 
-    <form method="POST" class="space-y-4">
+    <form method="POST" class="space-y-5">
 
         <!-- Kode Barang -->
         <div>
-            <label class="block font-medium mb-1">Kode Barang</label>
+            <label class="block font-medium mb-1 text-gray-200">Kode Barang</label>
             <input type="text" name="kode_barang" required
-                   class="w-full border px-3 py-2 rounded focus:ring focus:ring-blue-300">
+                class="w-full bg-gray-800 border border-gray-700 text-gray-200 px-3 py-2 rounded-lg
+                       focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none
+                       transition shadow-inner">
         </div>
 
         <!-- Nama Barang -->
         <div>
-            <label class="block font-medium mb-1">Nama Barang</label>
+            <label class="block font-medium mb-1 text-gray-200">Nama Barang</label>
             <input type="text" name="nama_barang" required
-                   class="w-full border px-3 py-2 rounded focus:ring focus:ring-blue-300">
+                class="w-full bg-gray-800 border border-gray-700 text-gray-200 px-3 py-2 rounded-lg
+                       focus:ring-2 focus:ring-teal-400 focus:border-teal-400 outline-none
+                       transition shadow-inner">
         </div>
 
         <!-- Kategori -->
         <div>
-            <label class="block font-medium mb-1">Kategori</label>
+            <label class="block font-medium mb-1 text-gray-200">Kategori</label>
             <input type="text" name="kategori"
-                   class="w-full border px-3 py-2 rounded focus:ring focus:ring-blue-300"
-                   placeholder="Opsional">
+                class="w-full bg-gray-800 border border-gray-700 text-gray-200 px-3 py-2 rounded-lg
+                       focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none
+                       transition shadow-inner"
+                placeholder="Opsional">
         </div>
 
         <!-- Stok awal -->
         <div>
-            <label class="block font-medium mb-1">Stok Awal</label>
+            <label class="block font-medium mb-1 text-gray-200">Stok Awal</label>
             <input type="number" name="stok" min="0" value="0"
-                   class="w-full border px-3 py-2 rounded focus:ring focus:ring-blue-300">
+                class="w-full bg-gray-800 border border-gray-700 text-gray-200 px-3 py-2 rounded-lg
+                       focus:ring-2 focus:ring-green-400 focus:border-green-400 outline-none
+                       transition shadow-inner">
         </div>
 
-        <div class="flex gap-3 pt-3">
+        <!-- Tombol -->
+        <div class="flex gap-4 pt-4 justify-center">
+
             <button type="submit" name="simpan"
-                    class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+                class="bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400
+                       text-white px-6 py-2 rounded-xl shadow-lg hover:shadow-blue-500/40
+                       transition-all duration-200 font-semibold tracking-wide">
                 Simpan
             </button>
 
             <a href="index.php"
-               class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded">
+                class="bg-gradient-to-r from-gray-600 to-gray-500 hover:from-gray-500 hover:to-gray-400
+                       text-white px-6 py-2 rounded-xl shadow-lg hover:shadow-gray-400/40
+                       transition-all duration-200 font-semibold tracking-wide">
                 Batal
             </a>
         </div>
+
     </form>
 </div>
 

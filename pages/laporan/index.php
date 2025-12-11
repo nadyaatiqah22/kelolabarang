@@ -50,17 +50,19 @@ $barang = query("
 ?>
 
 
-
-<h1 class="text-2xl font-bold mb-4">Laporan Inventaris</h1>
+<h1 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-800 text-center sm:text-left">
+    Laporan Inventaris
+</h1>
 
 <!-- Filter -->
-<div class="bg-gradient-to-r from-blue-50 to-green-50 p-4 rounded-2xl shadow mb-6 flex items-center gap-4">
+<div class="bg-gradient-to-r from-blue-50 to-green-50 p-5 sm:p-6 rounded-2xl shadow-lg mb-6 flex flex-col sm:flex-row sm:items-end gap-4">
 
-    <form method="GET" class="flex gap-4">
+    <form method="GET" class="flex flex-col sm:flex-row gap-4 w-full">
 
         <div>
-            <label class="block font-medium text-gray-700">Bulan</label>
-            <select name="bulan" class="border rounded px-3 py-2">
+            <label class="block font-medium text-gray-700 mb-1">Bulan</label>
+            <select name="bulan" class="border border-gray-300 rounded-lg px-3 py-2 w-full
+                                        focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none">
                 <?php for ($b = 1; $b <= 12; $b++): ?>
                     <option value="<?= $b; ?>" <?= ($bulan == $b) ? "selected" : "" ?>>
                         <?= date("F", mktime(0,0,0,$b,10)); ?>
@@ -70,8 +72,9 @@ $barang = query("
         </div>
 
         <div>
-            <label class="block font-medium text-gray-700">Tahun</label>
-            <select name="tahun" class="border rounded px-3 py-2">
+            <label class="block font-medium text-gray-700 mb-1">Tahun</label>
+            <select name="tahun" class="border border-gray-300 rounded-lg px-3 py-2 w-full
+                                        focus:ring-2 focus:ring-blue-400 focus:border-blue-400 outline-none">
                 <?php for ($t = 2020; $t <= date("Y"); $t++): ?>
                     <option value="<?= $t; ?>" <?= ($tahun == $t) ? "selected" : "" ?>>
                         <?= $t; ?>
@@ -80,8 +83,9 @@ $barang = query("
             </select>
         </div>
 
-        <div class="flex items-end">
-            <button class="bg-gradient-to-r from-yellow-500 to-yellow-500 text-white px-4 py-2 rounded-2xl shadow hover:from-blue-600 hover:to-green-600 transition">
+        <div class="flex items-center">
+            <button class="bg-gradient-to-r from-blue-500 to-teal-400 hover:from-teal-400 hover:to-blue-500
+                           text-white px-6 py-2 rounded-2xl shadow-lg font-semibold transition-all">
                 Tampilkan
             </button>
         </div>
@@ -92,29 +96,30 @@ $barang = query("
 <!-- Tombol Export -->
 <div class="flex gap-3 mb-4">
     <a href="/kelolabarang/pages/laporan/export_excel.php?bulan=<?= $bulan ?>&tahun=<?= $tahun ?>"
-       class="bg-gradient-to-r from-green-500 to-green-500 text-white px-4 py-2 rounded-2xl shadow hover:from-green-600 hover:to-blue-600 transition">
+       class="bg-gradient-to-r from-green-500 to-teal-400 hover:from-teal-400 hover:to-green-500
+              text-white px-5 py-2 rounded-2xl shadow-lg font-semibold transition-all">
        Export Excel
     </a>
 </div>
 
 <!-- Tabel Laporan -->
-<div class="bg-gradient-to-br from-blue-50 to-green-50 p-6 rounded-2xl shadow-lg">
-    <table class="min-w-full table-auto border-collapse text-gray-800">
+<div class="bg-gradient-to-br from-blue-50 to-green-50 p-4 sm:p-6 rounded-2xl shadow-lg overflow-x-auto">
+    <table class="min-w-max w-full table-auto border-collapse text-gray-800">
         <thead>
-        <tr class="bg-gradient-to-r from-blue-200 to-green-200 text-gray-900">
-            <th class="border px-4 py-2">No</th>
-            <th class="border px-4 py-2 text-left">Nama Barang</th>
-            <th class="border px-4 py-2">Stok Awal</th>
-            <th class="border px-4 py-2">Masuk</th>
-            <th class="border px-4 py-2">Keluar</th>
-            <th class="border px-4 py-2">Stok Akhir</th>
-        </tr>
+            <tr class="bg-gradient-to-r from-blue-200 to-green-200 text-gray-900 text-sm sm:text-base">
+                <th class="border px-4 py-2 text-center">No</th>
+                <th class="border px-4 py-2 text-left">Nama Barang</th>
+                <th class="border px-4 py-2 text-center">Stok Awal</th>
+                <th class="border px-4 py-2 text-center">Masuk</th>
+                <th class="border px-4 py-2 text-center">Keluar</th>
+                <th class="border px-4 py-2 text-center">Stok Akhir</th>
+            </tr>
         </thead>
 
         <tbody>
         <?php if(empty($barang)): ?>
             <tr>
-                <td colspan="6" class="border px-4 py-2 text-center">Tidak ada transaksi di bulan ini</td>
+                <td colspan="6" class="border px-4 py-2 text-center text-gray-500">Tidak ada transaksi di bulan ini</td>
             </tr>
         <?php else: ?>
             <?php 
@@ -125,7 +130,7 @@ $barang = query("
                 $awal   = $b['stok'] + $keluar - $masuk;
                 $akhir  = $awal + $masuk - $keluar;
             ?>
-                <tr class="hover:bg-blue-50 transition">
+                <tr class="hover:bg-blue-50 transition-all">
                     <td class="border px-4 py-2 text-center"><?= $no++; ?></td>
                     <td class="border px-4 py-2 font-semibold"><?= $b['nama_barang']; ?></td>
                     <td class="border px-4 py-2 text-center"><?= $awal; ?></td>
