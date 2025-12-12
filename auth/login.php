@@ -151,6 +151,13 @@ if (isset($_POST['login'])) {
             </button>
         </form>
 
+        <div class="mt-4 text-center">
+    <a href="../assets/bukupanduan.pdf" target="_blank"
+       class="inline-block bg-gradient-to-r from-green-500 to-green-500 text-black px-5 py-2 rounded-2xl shadow-lg hover:from-green-600 hover:to-green-400 transition transform duration-150">
+       Lihat Panduan PDF
+    </a>
+</div>
+
         <p class="text-gray-400 text-center mt-6 text-sm">
             &copy; <?= date("Y"); ?> Inventaris Barang
         </p>
